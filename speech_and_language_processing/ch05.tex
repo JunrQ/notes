@@ -1,0 +1,74 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+
+\begin{document}
+	
+	\subsection*{5.5 HMM PART-OF-SPEECH TAGGING}
+	
+	\begin{equation}
+		\hat{t}^n_1 = \arg\max_{t^n_1}\frac{P(w_1^n|t_1^n)}{P(w_1^n)}P(t_1^n)
+	\end{equation}
+	
+	\paragraph{}
+	HMM taggers therefore make two simplifying assumptions. The first assumption is that the probability of a word appearing is dependent only on its own part-of-speech tag; that it is independent of other words around it, and of the other tags around it:
+	
+	\begin{equation}
+		P(w_1^n|t_1^n) \approx \prod_{i=1}^{n}P(w_i | t_i)
+	\end{equation}
+	
+	\paragraph{}
+	The second assumption is that the probability of a tag appearing is dependent only
+	on the previous tag, the bigram assumption we saw in Ch. 4
+	
+	\begin{equation}
+		P(t^n_1) \approx \prod_{i=1}^{n}P(t_i | t_{i-1})
+	\end{equation}
+	
+		\subsubsection*{5.5.1 Computing the most-likely tag sequence: A motivating ex- ample}
+		
+		\paragraph{}
+		The previous section showed that the HMM tagging algorithm chooses as the most likely tag sequence the one that maximizes the product of two terms; the probability of the sequence of tags, and the probability of each tag generating a word.
+		
+		\subsubsection*{5.5.2 Formalizing Hidden Markov Model taggers}
+		
+		\begin{tabular}{lp{7cm}}
+			$Q=q_1q_2...q_N$ & a set of $N$ \textbf{states} \\
+			$A=a_{11}a_{12}...a_{n1}...a{nn}$ & a \textbf{transition probability matrix} $A$, each $a_{ij}$ representing the probability of moving from state $i$ to state $j$, s.t. $\sum_{j=1}^{n} = 1$ \\
+			$O=o_1o_2...o_T$ & a sequence of $T$ observations, each one drawn from a vocabulary $V = v_1,v_2,...,v_V$ \\
+			$B=b_i(o_t)$ & A sequence of observation likelihoods:, also called emission probabilities, each expressing the probability of an observation $o_t$ being generated from a state $i$ \\
+			$q_0,q_F$ & a special start state and end (final) state \\
+		\end{tabular}
+	
+		\subsubsection*{5.5.3 The Viterbi Algorithm for HMM Tagging}
+		
+		\paragraph{}
+		For any model, such as an HMM, that contains hidden variables, the task of determin- ing which sequence of variables is the underlying source of some sequence of observa- tions is called the \textbf{decoding} task. The \textbf{Viterbi} algorithm is perhaps the most common decoding algorithm used for HMMs, whether for part-of-speech tagging or for speech recognition.
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=10cm]{5-17}
+		\end{figure}
+	
+	\subsection*{5.6 TRANSFORMATION-BASED TAGGING}
+	
+	\paragraph{}
+	Transformation-Based Tagging, sometimes called Brill tagging, is an instance of the \textbf{Transformation-Based Learning (TBL)} approach to machine learning.
+	
+	\subsection*{5.7 EVALUATION AND ERROR ANALYSIS}
+	
+	\paragraph{}
+	
+	
+	
+		
+		
+	
+		
+		
+		
+	
+	
+	
+	
+\end{document}
